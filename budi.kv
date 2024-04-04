@@ -1,0 +1,74 @@
+<MainScreen>:
+    MDBoxLayout:
+        padding: '10dp', '10dp'
+        size_hint_x: .95
+        pos_hint: {"center_x": .5}
+        orientation: 'vertical'
+        Image:
+            source: 'character.png'
+            size_hint_y: .8
+        MDBoxLayout:
+            size_hint_y: .2
+            pos_hint: {"center_x": .5}
+            orientation: 'horizontal'
+            MDLabel:
+                halign: "center"
+                font_style: "Title"
+                role: 'large'
+                text: 'Kg emitidos: {VAR_EMISSION} kg'
+        MDCard:
+            style: "filled"
+            StatisticsTable:
+
+
+MDScreen:
+    md_bg_color: self.theme_cls.backgroundColor
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            type: "small"
+            size_hint_x: 1
+            pos_hint: {"center_x": .5, "top": 1}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "menu"
+
+            MDTopAppBarTitle:
+                id: title_bar
+                text: "Budi"
+                pos_hint: {"center_x": .5}
+
+            MDTopAppBarTrailingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "account-circle-outline"
+
+        MDScreenManager:
+            id: screen_manager
+            MainScreen:
+                name: 'Histórico'
+            MapScreen:
+                name: 'Mapa'
+            ChallengeScreen:
+                name: 'Retos semanales'
+
+        MDNavigationBar:
+            on_switch_tabs: app.on_switch_tabs(*args)
+
+            MDNavigationItem:
+                MDNavigationItemIcon:
+                    icon: "clipboard-clock"
+                MDNavigationItemLabel:
+                    text: "Histórico"
+
+            MDNavigationItem:
+                MDNavigationItemIcon:
+                    icon: "map"
+                MDNavigationItemLabel:
+                    text: "Mapa"
+
+            MDNavigationItem:
+                MDNavigationItemIcon:
+                    icon: "sticker-alert"
+                MDNavigationItemLabel:
+                    text: "Retos semanales"

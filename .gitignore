@@ -1,1 +1,3 @@
 /.buildozer/
+/cache/
+/bin/
