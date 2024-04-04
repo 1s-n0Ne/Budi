@@ -18,7 +18,6 @@ from kivy_garden.mapview import MapView
 
 Window.size = (540, 960)
 
-
 class StatisticsTable(MDGridLayout):
     def __init__(self, **kwargs):
         super(StatisticsTable, self).__init__(**kwargs)
@@ -60,17 +59,18 @@ class MissionCard(MDCard):
     def __init__(self, **kwargs):
         super(MissionCard, self).__init__(**kwargs)
         self.style = 'filled'
-        missionData = MDBoxLayout(orientation='horizontal', padding=(10, 10))
+        mission_data = MDBoxLayout(orientation='horizontal', padding=(10, 10))
         progress = MDBoxLayout(orientation='vertical', padding=(10, 10))
         progress.add_widget(MDLabel(text='Este es el texto de una mision'))
         progress.add_widget(MDLinearProgressIndicator(
             value=random.randint(25,100),
             size_hint_y=0.4
         ))
-        missionData.add_widget(Image(source='icons/mission.png', size_hint_x=0.45))
-        missionData.add_widget(progress)
+        mission_data.add_widget(Image(source='icons/mission.png', size_hint_x=0.45))
+        mission_data.add_widget(progress)
 
-        self.add_widget(missionData)
+        self.add_widget(mission_data)
+
 
 class ChallengeScreen(MDScreen):
     def __init__(self, **kwargs):
