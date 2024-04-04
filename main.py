@@ -1,5 +1,6 @@
 import random
 
+import requests
 from kivy.lang import Builder
 
 from kivymd.app import MDApp
@@ -17,6 +18,7 @@ from kivy.core.window import Window
 from kivy_garden.mapview import MapView
 
 Window.size = (540, 960)
+
 
 class StatisticsTable(MDGridLayout):
     def __init__(self, **kwargs):
@@ -61,7 +63,12 @@ class MissionCard(MDCard):
         self.style = 'filled'
         mission_data = MDBoxLayout(orientation='horizontal', padding=(10, 10))
         progress = MDBoxLayout(orientation='vertical', padding=(10, 10))
-        progress.add_widget(MDLabel(text='Este es el texto de una mision'))
+        res = requests.get('https://budiserver-h4gt44kccq-uc.a.run.app/getMissions')
+        if res.status_code == 200:
+            mission_text = res.text.replace('"', '')
+            mission_text = mission_text.replace('\\', '')
+            mission_text = mission_text.replace('*', '')
+            progress.add_widget(MDLabel(text=mission_text))
         progress.add_widget(MDLinearProgressIndicator(
             value=random.randint(25,100),
             size_hint_y=0.4
