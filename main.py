@@ -1,7 +1,9 @@
 import random
 
 import requests
+import polyline
 from kivy.lang import Builder
+from kivy.properties import ObjectProperty
 
 from kivymd.app import MDApp
 from kivymd.uix.boxlayout import MDBoxLayout
@@ -15,7 +17,10 @@ from kivymd.uix.screen import MDScreen
 from kivy.uix.image import Image
 
 from kivy.core.window import Window
-from kivy_garden.mapview import MapView
+from kivy.graphics import Color, Line
+from kivy.graphics.transformation import Matrix
+from kivy.graphics.context_instructions import Translate, Scale
+from kivy_garden.mapview import MapView, MapLayer
 
 Window.size = (540, 960)
 
@@ -51,10 +56,62 @@ class MainScreen(MDScreen):
     pass
 
 
+class LineMapLayer(MapLayer):
+    def __init__(self, **kwargs):
+        super(LineMapLayer, self).__init__(**kwargs)
+        self.zoom = 0
+
+    def reposition(self):
+        mapview = self.parent
+
+        #: Must redraw when the zoom changes
+        #: as the scatter transform resets for the new tiles
+        if (self.zoom != mapview.zoom):
+            self.draw_line()
+
+    def draw_line(self, *args):
+        mapview = self.parent
+        self.zoom = mapview.zoom
+        res = requests.get('https://budiserver-h4gt44kccq-uc.a.run.app/alternateRouter')
+        candidates = res.json()
+
+        lines = []
+        for method in candidates:
+            line = polyline.decode(candidates[method]['polyline'])
+
+            point_list = []
+            for point in line:
+                screen_point = mapview.get_window_xy_from(point[0], point[1], mapview.zoom)
+                point_list.append(screen_point)
+
+            lines.append(point_list)
+
+            # When zooming we must undo the current scatter transform
+            # or the animation makes the line misplaced
+        scatter = mapview._scatter
+        x,y,s = scatter.x, scatter.y, scatter.scale
+
+        with self.canvas:
+            self.canvas.clear()
+            Scale(1/s,1/s,1)
+            Translate(-x,-y)
+            colors = [(1.,0.,0.,.6),
+                      (1.,1.,0.,.6),
+                      (0.,0.,1.,.6),
+                      (0.,0.,0.,.6)]
+
+            for i, line in enumerate(lines):
+                Color(colors[i][0], colors[i][1], colors[i][2], colors[i][3])
+                Line(points=line, width=5, joint="bevel")
+
+
 class MapScreen(MDScreen):
     def __init__(self, **kwargs):
         super(MapScreen, self).__init__(**kwargs)
-        self.add_widget(MapView(zoom=16, lat=20.653, lon=-103.391))
+        map_view = MapView(zoom=13, lat=20.5931, lon=-103.3789)
+        map_view.add_layer(LineMapLayer())
+
+        self.add_widget(map_view)
 
 
 class MissionCard(MDCard):

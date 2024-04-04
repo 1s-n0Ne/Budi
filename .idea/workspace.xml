@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f55e287a-bc66-4285-9a24-12cc2975269d" name="Changes" comment="Added readme. Fixed formatting.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="f55e287a-bc66-4285-9a24-12cc2975269d" name="Changes" comment="Added demo image" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,6 +100,7 @@
       <updated>1712080910022</updated>
       <workItem from="1712080912304" duration="4271000" />
       <workItem from="1712104575695" duration="36172000" />
+      <workItem from="1712226780977" duration="775000" />
     </task>
     <task id="LOCAL-00001" summary="Plz work">
       <option name="closed" value="true" />
@@ -128,7 +126,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712206865137</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added mission API">
+      <option name="closed" value="true" />
+      <created>1712227220261</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712227220261</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added demo image">
+      <option name="closed" value="true" />
+      <created>1712227284541</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712227284541</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,11 +164,13 @@
     <MESSAGE value="Plz work" />
     <MESSAGE value="Skelly finished" />
     <MESSAGE value="Added readme. Fixed formatting." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added readme. Fixed formatting." />
+    <MESSAGE value="Added mission API" />
+    <MESSAGE value="Added demo image" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added demo image" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Budi$main.coverage" NAME="main Coverage Results" MODIFIED="1712204819998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Budi$BudiApp.coverage" NAME="BudiApp Coverage Results" MODIFIED="1712206232493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Budi$BudiApp.coverage" NAME="BudiApp Coverage Results" MODIFIED="1712227160652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Budi$materialTest.coverage" NAME="materialTest Coverage Results" MODIFIED="1712204783707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
